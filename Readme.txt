@@ -1,62 +1,85 @@
+# Dockerized Web Application Deployment on Amazon Linux EC2
+Project Overview
+This project focuses on containerizing a web application and deploying it on an Amazon Linux EC2 instance using Docker. The workflow includes setting up the EC2 instance, installing required dependencies, creating a Docker image from source code, deploying the containerized application, and pushing the image to Docker Hub for version control and future scalability.
 
-Project Title:
-Docker Container Webapp Project
+Technical Implementation
+Key Steps:
+Provision EC2 Instance:
 
-
-
-Project detail:
-The Docker Container Project focuses on deploying a web application using Docker containers on an Amazon Linux EC2 instance. 
-The project involves setting up an EC2 instance, installing necessary dependencies, 
-creating a Docker image from source code, running the containerized application, and pushing the image to Docker Hub for future use.
-
-
-
-Project description:
-
-Set up an Amazon Linux EC2 instance and install Docker and Git.
-Clone the source code from GitHub and create a Dockerfile.
-Build and run the application inside a Docker container.
-Expose the application via a public port and configure security groups.
-Publish the Docker image to Docker Hub for easy access and deployment.
-
-
-Project Steps
-
-Steps 
-
-1-	Create amazon Linux EC2 Instance and install git and docker
-2-	Create working directory and clone the source code from GitHub
-3-	Create the docker images through raw source code 
-4-	Create and run the container with specific port and allow that port in Security group and publish web application.
-5-	Create new repository on dockerhub and push new image to dockerhub
+Launch an Amazon Linux EC2 instance and install Docker and Git.
+Source Code Acquisition:
+Clone the application repository from GitHub into a designated working directory.
 
 
 
-Step-1	Create amazon Linux EC2 Instance and install git and docker
+Containerization:
+Create a Dockerfile to define the containerized environment.
+Build a Docker image from the raw source code.
+Deployment & Configuration:
 
+Run the Docker container, exposing it on a specified port.
+Configure AWS Security Groups to allow traffic to the application.
+Image Distribution:
 
-Step-2	Create EC2 Instance Docker and Install Package git / Docker
+Push the Docker image to Docker Hub for centralized storage and future deployments.
+Step-by-Step Implementation
+Step 1: Launch Amazon Linux EC2 Instance & Install Dependencies
+Provision an Amazon Linux EC2 instance and install required packages:
 
+bash
+Copy
+Edit
+sudo yum update -y
+sudo yum install -y git docker
+sudo systemctl start docker
+sudo usermod -aG docker ec2-user
+Step 2: Clone Source Code from GitHub
+Create a working directory and pull the application source code:
 
-step-3 Create working directory and clone the source code from GitHub
+bash
+Copy
+Edit
+mkdir ~/webapp && cd ~/webapp
+git clone <repository-url> .
+Step 3: Create a Dockerfile
+Define the Docker configuration:
 
-	
-
-step-4 Create docker file in working directory with source code
-
+bash
+Copy
+Edit
 vi Dockerfile
+Add the following content:
 
+dockerfile
+Copy
+Edit
 FROM nginx:alpine
-COPY . /usr/share/nginx/html/			
+COPY . /usr/share/nginx/html/
+Step 4: Build the Docker Image
+Execute the following command to generate the Docker image:
 
+bash
+Copy
+Edit
+docker build -t webapp1of2 .
+Step 5: Deploy the Container
+Run the containerized application and expose it on port 8080:
 
-step-5  Create the docker images through raw source code 
-	docker build -t webapp .
-	
+bash
+Copy
+Edit
+docker run -d -p 8080:80 webapp1of2
+Ensure that the AWS Security Group allows inbound traffic on port 8080.
 
-step- 6  Create container and run container in specific port with respect to SG
-	 docker run -d -p 8080:80 webapp
+Step 6: Push the Image to Docker Hub
+Authenticate with Docker Hub and push the image for future deployments:
 
+bash
+Copy
+Edit
+docker login
+docker tag webapp1of2 <dockerhub-username>/webapp1of2:latest
+docker push <dockerhub-username>/webapp1of2:latest
 
 step-7
 
