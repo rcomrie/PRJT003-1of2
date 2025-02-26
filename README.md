@@ -3,7 +3,7 @@
 ## Project Overview
 This project focuses on containerizing a web application and deploying it on an Amazon Linux EC2 instance using Docker. The workflow includes setting up the EC2 instance, installing required dependencies, creating a Docker image from source code, deploying the containerized application, and pushing the image to Docker Hub for version control and future scalability.
 
-Technical Implementation
+## Technical Implementation
 Key Steps:
 Provision EC2 Instance:
 
