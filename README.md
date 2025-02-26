@@ -26,7 +26,7 @@ Push the Docker image to Docker Hub for centralized storage and future deploymen
 
 Step-by-Step Implementation
 
-Step 1: Launch Amazon Linux EC2 Instance & Install Dependencies
+### Step 1: Launch Amazon Linux EC2 Instance & Install Dependencies
 Provision an Amazon Linux EC2 instance and install required packages:
 
 ![Screenshot 2025-02-23 122016](https://github.com/user-attachments/assets/dd44f7e4-5d99-4321-af0d-a2e54b9022e3)
@@ -34,7 +34,7 @@ Provision an Amazon Linux EC2 instance and install required packages:
 ![Screenshot 2025-02-23 122930](https://github.com/user-attachments/assets/1b680af2-7879-4c0a-8b14-ad33226d2f2f)
 
 
-Step 2: Clone Source Code from GitHub
+### Step 2: Clone Source Code from GitHub
 Create a working directory and pull the application source code:
 
 bash
@@ -44,21 +44,21 @@ mkdir ~/webapp1of2 && cd ~/webapp1of2
 git clone <repository-url> .
 
 
-Step 3: Create a Dockerfile
+### Step 3: Create a Dockerfile
 Define the Docker configuration:
 
 vi Dockerfile
 FROM nginx:alpine
 COPY . /usr/share/nginx/html/
 
-Step 4: Build the Docker Image
+### Step 4: Build the Docker Image
 Execute the following command to generate the Docker image:
 
 docker build -t webapp1of2 .
 
 ![Screenshot 2025-02-23 123243](https://github.com/user-attachments/assets/22109fc6-0d7e-4737-a9be-1471f8c92955)
 
-Step 5: Deploy the Container
+### Step 5: Deploy the Container
 Run the containerized application and expose it on port 8080:
 
 ![Screenshot 2025-02-23 124539](https://github.com/user-attachments/assets/31816911-f95f-4298-9891-a5ae6880c98e)
@@ -73,7 +73,7 @@ Ensure that the AWS Security Group allows inbound traffic on port 8080.
 ![Screenshot 2025-02-23 124911](https://github.com/user-attachments/assets/370e23ec-e0e9-4087-aeac-89381575215d)
 
 
-Step 6: Push the Image to Docker Hub
+### Step 6: Push the Image to Docker Hub
 Authenticate with Docker Hub and push the image for future deployments:
 
 docker login
